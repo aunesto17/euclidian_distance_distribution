@@ -1,7 +1,7 @@
 /*  
     - Curso : Estructuras de Datos Avanzadas - Laboratorio
     - Alumno: Alexander Baylon
-    - Fecha : 21/09/2021
+    - Fecha : 01/03/2022
     - Distancia euclidiana entre puntos en varias dimensiones y su distribucion
 */
 
@@ -10,22 +10,25 @@
 int main () {
     // N-dimension, Sample Size
     int N,S,i;
-    // 2, 5, 10, 15, 20, 25
     cout << "Ingrese el numero de dimensiones: ";
     cin >> N;
     S = 20000;
     
     double min, max, j, tmp;
     
-    //vector< vector<double> > time_matrix;
     chrono::time_point<chrono::steady_clock> start, end;
-    //time_matrix.resize(4, vector<double>(4));
 
-    euc_dist<int> A(N, S, 0, 1000);
+    euc_dist<int> A(N, S, 0, 100);
 
     A.gen_data();
     //A.print_data();
+    start = chrono::steady_clock::now();
+
     A.calc_distance();
+
+    end = chrono::steady_clock::now();
+    double duration = chrono::duration<double> (end-start).count();
+    cout << "duration: " << duration << endl;
     //A.print_dist_array();
 
     max = A.max_distance();

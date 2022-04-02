@@ -45,7 +45,7 @@ public:
         min = mi;
         max = ma;
         //gen_data();
-        rng_.dis.param(uniform_int_distribution<>::param_type{min, max});
+        rng_.dis.param(uniform_int_distribution<>::param_type(min, max));
         //dist_array.resize(S, vector<T>(N));
     }
 
